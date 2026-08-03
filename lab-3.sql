@@ -46,8 +46,7 @@ where  city = 'rajkot' or city = 'surat'
 select sname,branch from student
 where  spi >8.00 and stdid<105
 
--- Find all students whose SPI is greater than or equal to 7.0 and less than or equal to 9.0 (USE AND &
-BETWEEN).
+-- Find all students whose SPI is greater than or equal to 7.0 and less than or equal to 9.0 (USE AND & BETWEEN).
 
 select * from student
 --where spi >=7.0 and spi <=9.0
@@ -60,8 +59,7 @@ where spi between 7 and 9
 select * from student
 where  branch != 'computer'
 
--- Display Student ID, Name & SPI of students who belong to ‘COMPUTER’, ‘CIVIL’ or ‘CHEMICAL’ branch
-and ID is less than 104.
+-- Display Student ID, Name & SPI of students who belong to ‘COMPUTER’, ‘CIVIL’ or ‘CHEMICAL’ branch and ID is less than 104.
 
 
 
@@ -103,3 +101,62 @@ SELECT TOP 50 PERCENT * FROM STUDENT
 --Retrieve first five student IDs from STUDENT table.
 
 SELECT TOP 5  stdid FROM STUDENT
+
+--Display all the details of first five students from STUDENT table. 
+
+SELECT TOP 5 * FROM STUDENT
+
+
+--Display all the details of first three students whose SPI is greater than 8.0. 
+
+select TOP 3 * from student
+where spi >8.00 
+
+
+--Display Student ID, Name of first five students whose branch does not belong to ‘COMPUTER’ branch. 
+
+SELECT TOP 5  stdid,sname,branch  FROM STUDENT
+where branch not in ('computer')
+
+
+--Select all details with student IDs not in the range 105 to 109. 
+
+select * from student
+WHERE stdid not between 105 and 109
+
+
+--Select all records from STUDENT where SPI is greater than 7.0 and less than or equal to 9.0, and student ID is between 102 and 108. 
+
+select * from student
+where spi between 7 and 9 and stdid between 102 and 108
+
+
+--Display all details of students who have SPI more than 8.5 without using * from STUDENT table.
+
+select stdid,sname,city,spi,branch from student
+where spi <8.5 
+
+
+--Retrieve names of students whose city is ‘RAJKOT’ and SPI is less than 8.00.
+
+select * from student
+where city = 'rajkot' and spi <8.00
+
+
+--Retrieve records from STUDENT table where SPI is greater than 8.0 and student ID is less than 105. 
+
+select * from student
+where stdid <105 and spi <8.00
+
+
+--Retrieve records from STUDENT table where SPI is greater than 7.5 and student ID is between 100 and 110 and city is ‘RAJKOT’ or ‘SURAT’. 
+
+select * from student
+where stdid between 100 and 110 and spi >7.5 and city in ('rajkot','surat')
+
+
+-- Display details of students who belong to ‘CIVIL’ or ‘MECHANICAL’ branch and SPI is greater than 8.0.
+
+select * from student
+WHERE Branch IN ('CIVIL', 'CHEMICAL') 
+  AND spi >8.00
